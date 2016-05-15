@@ -21,16 +21,26 @@ class ToDoItemTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInit_ShouldSetTitle() {
+        //let item = ToDoItem()
+        let item = ToDoItem(title: "Test title")
+        XCTAssertEqual(item.title, "Test title", "Initializer should set the item title")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testInit_ShouldSetTitleAndDescription() {
+        let item = ToDoItem(title: "Test title", itemDescription: "Test description")
+        XCTAssertEqual(item.itemDescription, "Test description", "Initializer should set the item description")
     }
     
+    func testInit_ShouldSetTitleAndDescriptionAndTimestamp() {
+        let item = ToDoItem(title: "Test title", itemDescription: "Test description", timestamp: 0.0)
+        XCTAssertEqual(0.0, item.timestamp, "Initializer should set the timestamp")
+    }
+    
+    func testInit_ShouldSetTitleAndDescriptionAndTimestampAndLocation() {
+        let location = Location(name: "Test name")
+        let item = ToDoItem(title: "Test title", itemDescription: "Test description", timestamp: 0.0, location: location)
+        
+        XCTAssertEqual(location.name, item.location?.name, "Initializer should set the location")
+    }
 }
