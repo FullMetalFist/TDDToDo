@@ -12,13 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var toDoViewController: ToDoViewController?
+    var itemListViewController: ItemListViewController?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        toDoViewController = ToDoViewController(nibName: nil, bundle: nil)
-        window?.rootViewController = toDoViewController
+        itemListViewController = ItemListViewController(nibName: nil, bundle: nil)
+        window?.rootViewController = itemListViewController
         window?.backgroundColor = UIColor.blackColor()
         window?.makeKeyAndVisible()
         return true
