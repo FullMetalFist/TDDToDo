@@ -39,7 +39,7 @@ class LocationTests: XCTestCase {
         let firstLocation = Location(name: "Home")
         let secondLocation = Location(name: "Home")
         
-        //XCTAssertEqual(firstLocation, secondLocation)
+        XCTAssertEqual(firstLocation, secondLocation)
     }
     
     func testWhenLatitudeDiffers_ShouldBeNotEqual() {

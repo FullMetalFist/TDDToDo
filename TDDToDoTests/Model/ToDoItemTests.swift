@@ -59,11 +59,11 @@ class ToDoItemTests: XCTestCase {
     }
     
     func testWhenOneLocationIsNilAndTheOtherIsnt_ShouldBeNotEqual() {
-        var firstItem = ToDoItem(title: "First title",
+        let firstItem = ToDoItem(title: "First title",
                                  itemDescription: "First description",
                                  timestamp: 0.0,
                                  location: Location(name: "Home"))
-        var secondItem = ToDoItem(title: "First title",
+        let secondItem = ToDoItem(title: "First title",
                                   itemDescription: "First description",
                                   timestamp: 0.0,
                                   location: nil)

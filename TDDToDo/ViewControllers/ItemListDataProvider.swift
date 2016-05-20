@@ -8,13 +8,37 @@
 
 import UIKit
 
+enum Section: Int {
+    case ToDo
+    case Done
+}
+
 class ItemListDataProvider: NSObject, UITableViewDataSource {
     
+    var itemManager: ItemManager?
+    
+    // MARK: UITableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
+        guard let itemManager = itemManager else { return 0 }
+        guard let itemSection = Section(rawValue: section) else { fatalError() }
+        let numberOfRows: Int
+        switch itemSection {
+        case .ToDo:
+            numberOfRows = itemManager.toDoCount
+        case .Done:
+            numberOfRows = itemManager.doneCount
+        }
+        return numberOfRows
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return ItemCell()
     }
+    
+    // MARK: UITableView Delegate
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
 }
