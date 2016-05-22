@@ -33,7 +33,10 @@ class ItemListDataProvider: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return ItemCell()
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath)
+        
+        return cell
     }
     
     // MARK: UITableView Delegate

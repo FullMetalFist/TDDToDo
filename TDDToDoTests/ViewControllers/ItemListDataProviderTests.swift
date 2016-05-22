@@ -13,6 +13,7 @@ class ItemListDataProviderTests: XCTestCase {
     
     var sut: ItemListDataProvider!
     var tableView: UITableView!
+    var controller: ItemListViewController!
     
     override func setUp() {
         super.setUp()
@@ -20,7 +21,12 @@ class ItemListDataProviderTests: XCTestCase {
         sut = ItemListDataProvider()
         sut.itemManager = ItemManager()
         
-        tableView = UITableView()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        controller = storyboard.instantiateViewControllerWithIdentifier("ItemListViewController") as! ItemListViewController
+        
+        _ = controller.view
+        
+        tableView = controller.tableView
         tableView.dataSource = sut
     }
     
@@ -67,5 +73,34 @@ class ItemListDataProviderTests: XCTestCase {
         
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
         XCTAssertTrue(cell is ItemCell)
+    }
+    
+    func testCellForRow_DequeuesCell() {
+        let mockTableView = MockTableView()
+        
+        mockTableView.dataSource = sut
+        mockTableView.registerClass(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        
+        sut.itemManager?.addItem(ToDoItem(title: "First"))
+        mockTableView.reloadData()
+        
+        _ = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        
+        XCTAssertTrue(mockTableView.cellGotDequeued)
+    }
+}
+
+extension ItemListDataProviderTests {
+    
+    class MockTableView: UITableView {
+        
+        var cellGotDequeued = false
+        
+        override func dequeueReusableCellWithIdentifier(identifier: String, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            
+            cellGotDequeued = true
+            
+            return super.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+        }
     }
 }
