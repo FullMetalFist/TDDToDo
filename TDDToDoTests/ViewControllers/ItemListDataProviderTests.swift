@@ -102,7 +102,7 @@ class ItemListDataProviderTests: XCTestCase {
         
         let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MockItemCell
         
-        XCTAssertTrue(cell.configCellGotCalled)
+        XCTAssertEqual(cell.toDoItem, toDoItem)
     }
 }
 
@@ -122,10 +122,10 @@ extension ItemListDataProviderTests {
     
     class MockItemCell: ItemCell {
         
-        var configCellGotCalled = false
+        var toDoItem: ToDoItem?
         
         override func configCellWithItem(item: ToDoItem) {
-            configCellGotCalled = true
+            toDoItem = item
         }
     }
 }
