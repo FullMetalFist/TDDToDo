@@ -20,6 +20,7 @@
 		7C6AC9CE1CE8B4E1006AD257 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AC9CD1CE8B4E1006AD257 /* ItemManager.swift */; };
 		7C6AC9D51CEB5A08006AD257 /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AC9D41CEB5A08006AD257 /* ItemListViewControllerTests.swift */; };
 		7C6AC9D71CEB5A82006AD257 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AC9D61CEB5A82006AD257 /* ItemListViewController.swift */; };
+		7C871C081D60DC1200E6BFD1 /* ItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C871C071D60DC1200E6BFD1 /* ItemCellTests.swift */; };
 		7CC558A71CEBA9F200922DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC558A61CEBA9F200922DC8 /* Main.storyboard */; };
 		7CC558A91CEBAB4A00922DC8 /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC558A81CEBAB4A00922DC8 /* ItemListDataProvider.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		7C6AC9CD1CE8B4E1006AD257 /* ItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemManager.swift; path = Model/ItemManager.swift; sourceTree = "<group>"; };
 		7C6AC9D41CEB5A08006AD257 /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = ViewControllers/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		7C6AC9D61CEB5A82006AD257 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = ViewControllers/ItemListViewController.swift; sourceTree = "<group>"; };
+		7C871C071D60DC1200E6BFD1 /* ItemCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCellTests.swift; path = ViewControllers/ItemCellTests.swift; sourceTree = "<group>"; };
 		7CC558A61CEBA9F200922DC8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7CC558A81CEBAB4A00922DC8 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListDataProvider.swift; path = ViewControllers/ItemListDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 			children = (
 				7C6AC9D41CEB5A08006AD257 /* ItemListViewControllerTests.swift */,
 				7C163FB31CEBB1520029FEDC /* ItemListDataProviderTests.swift */,
+				7C871C071D60DC1200E6BFD1 /* ItemCellTests.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C871C081D60DC1200E6BFD1 /* ItemCellTests.swift in Sources */,
 				7C163FB41CEBB1520029FEDC /* ItemListDataProviderTests.swift in Sources */,
 				7C6AC9CC1CE8B47B006AD257 /* ItemManagerTests.swift in Sources */,
 				7C6AC9CA1CE8B0FF006AD257 /* LocationTests.swift in Sources */,
