@@ -14,27 +14,27 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    lazy var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter
     }()
     
-    func configCellWithItem(item: ToDoItem) {
+    func configCellWithItem(_ item: ToDoItem) {
         titleLabel?.text = item.title
         locationLabel.text = item.location?.name
         
         if let timestamp = item.timestamp {
-            let date = NSDate(timeIntervalSince1970: timestamp)
+            let date = Date(timeIntervalSince1970: timestamp)
             
-            dateLabel.text = dateFormatter.stringFromDate(date)
+            dateLabel.text = dateFormatter.string(from: date)
         }
     }
     
-    func configCellWithItem(item: ToDoItem, checked: Bool = false) {
+    func configCellWithItem(_ item: ToDoItem, checked: Bool = false) {
         
         if checked {
-            let attributedTitle = NSAttributedString(string: item.title, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+            let attributedTitle = NSAttributedString(string: item.title, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
             titleLabel.attributedText = attributedTitle
             locationLabel.text = nil
             dateLabel.text = nil
@@ -44,9 +44,9 @@ class ItemCell: UITableViewCell {
             locationLabel.text = item.location?.name
             
             if let timestamp = item.timestamp {
-                let date = NSDate(timeIntervalSince1970: timestamp)
+                let date = Date(timeIntervalSince1970: timestamp)
                 
-                dateLabel.text = dateFormatter.stringFromDate(date)
+                dateLabel.text = dateFormatter.string(from: date)
             }
         }
     }

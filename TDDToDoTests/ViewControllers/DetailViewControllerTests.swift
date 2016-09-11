@@ -18,7 +18,7 @@ class DetailViewControllerTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        sut = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         _ = sut.view
     }
     

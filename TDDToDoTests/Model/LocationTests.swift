@@ -63,7 +63,7 @@ class LocationTests: XCTestCase {
         performNotEqualTestWithLocationProperties("Home", secondName: "Office", firstLongLat: nil, secondLongLat: nil)
     }
     
-    func performNotEqualTestWithLocationProperties(firstName: String,
+    func performNotEqualTestWithLocationProperties(_ firstName: String,
                                                    secondName: String,
                                                    firstLongLat: (Double, Double)?,
                                                    secondLongLat: (Double, Double)?,

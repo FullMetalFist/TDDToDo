@@ -11,10 +11,15 @@ import UIKit
 class ItemListViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var dataProvider: protocol<UITableViewDataSource, UITableViewDelegate>!
+    @IBOutlet var dataProvider: UITableViewDataSource & UITableViewDelegate?
     
     override func viewDidLoad() {
         tableView.dataSource = dataProvider
         tableView.delegate = dataProvider
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        fatalError("init(coder:) has not been implemented")
     }
 }

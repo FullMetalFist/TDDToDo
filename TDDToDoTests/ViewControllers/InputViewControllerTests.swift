@@ -20,7 +20,7 @@ class InputViewControllerTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewControllerWithIdentifier("InputViewController") as! InputViewController
+        sut = storyboard.instantiateViewController(withIdentifier: "InputViewController") as! InputViewController
         
         _ = sut.view
     }
@@ -57,7 +57,7 @@ extension InputViewControllerTests {
         
         var completionHandler: CLGeocodeCompletionHandler?
         
-        override func geocodeAddressString(addressString: String, completionHandler: CLGeocodeCompletionHandler) {
+        override func geocodeAddressString(_ addressString: String, completionHandler: @escaping CLGeocodeCompletionHandler) {
             
             self.completionHandler = completionHandler
         }

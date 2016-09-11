@@ -9,8 +9,8 @@
 import UIKit
 
 enum Section: Int {
-    case ToDo
-    case Done
+    case toDo
+    case done
 }
 
 class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -18,35 +18,35 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
     var itemManager: ItemManager?
     
     // MARK: UITableView DataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let itemManager = itemManager else { return 0 }
         guard let itemSection = Section(rawValue: section) else { fatalError() }
         let numberOfRows: Int
         switch itemSection {
-        case .ToDo:
+        case .toDo:
             numberOfRows = itemManager.toDoCount
-        case .Done:
+        case .done:
             numberOfRows = itemManager.doneCount
         }
         return numberOfRows
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         guard let itemManager = itemManager else { fatalError() }
-        guard let section = Section(rawValue: indexPath.section) else {
+        guard let section = Section(rawValue: (indexPath as NSIndexPath).section) else {
             fatalError()
         }
         
         let item: ToDoItem
         switch section {
-        case .ToDo:
-            item = itemManager.itemAtIndex(indexPath.row)
-        case .Done:
-            item = itemManager.doneItemAtIndex(indexPath.row)
+        case .toDo:
+            item = itemManager.itemAtIndex((indexPath as NSIndexPath).row)
+        case .done:
+            item = itemManager.doneItemAtIndex((indexPath as NSIndexPath).row)
         }
         
         cell.configCellWithItem(item)
@@ -54,35 +54,35 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         
-        guard let section = Section(rawValue: indexPath.section) else { fatalError() }
+        guard let section = Section(rawValue: (indexPath as NSIndexPath).section) else { fatalError() }
         let buttonTitle: String
         switch section {
-        case .ToDo:
+        case .toDo:
             buttonTitle = "Check"
-        case .Done:
+        case .done:
             buttonTitle = "Uncheck"
         }
         return buttonTitle
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         guard let itemManager = itemManager else { fatalError() }
-        guard let section = Section(rawValue: indexPath.section) else { fatalError() }
+        guard let section = Section(rawValue: (indexPath as NSIndexPath).section) else { fatalError() }
         
         switch  section {
-        case .ToDo:
-            itemManager.checkItemAtIndex(indexPath.row)
-        case .Done:
-            itemManager.uncheckItemAtIndex(indexPath.row)
+        case .toDo:
+            itemManager.checkItemAtIndex((indexPath as NSIndexPath).row)
+        case .done:
+            itemManager.uncheckItemAtIndex((indexPath as NSIndexPath).row)
         }
         tableView.reloadData()
     }
     
     // MARK: UITableView Delegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     

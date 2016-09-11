@@ -17,7 +17,7 @@ class ItemListViewControllerTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewControllerWithIdentifier("ItemListViewController") as! ItemListViewController
+        sut = storyboard.instantiateViewController(withIdentifier: "ItemListViewController") as! ItemListViewController
         
         _ = sut.view
     }
