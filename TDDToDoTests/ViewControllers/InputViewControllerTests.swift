@@ -85,9 +85,9 @@ class InputViewControllerTests: XCTestCase {
         placemark.mockCoordinate = coordinate
         mockGeocoder.completionHandler?([placemark], nil)
         
-        let item = sut.itemManager?.itemAtIndex(0)
+        _ = sut.itemManager?.itemAtIndex(0)
         
-        let testItem = ToDoItem(title: "Test Title", itemDescription: "Test Description", timestamp: 1456095600, location: Location(name: "Office", coordinate: coordinate))
+        _ = ToDoItem(title: "Test Title", itemDescription: "Test Description", timestamp: 1456095600, location: Location(name: "Office", coordinate: coordinate))
         
         // the difference is the timestamps don't match
         //XCTAssertEqual(item, testItem)
@@ -101,6 +101,33 @@ class InputViewControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(actions.contains("save"))
+    }
+    
+    func test_GeocoderWorksAsExpected() {
+        
+        // did not like "expectation" as variable name
+        let expect = expectation(description: "Wait for geocode")
+        
+        CLGeocoder().geocodeAddressString("Infinite Loop 1, Cupertino") { (placemarks, error) -> Void in
+            let placemark = placemarks?.first
+            
+            let coordinate = placemark?.location?.coordinate
+            guard let latitude = coordinate?.latitude else {
+                XCTFail()
+                return }
+            
+            guard let longitude = coordinate?.longitude else {
+                XCTFail()
+                return }
+            
+            XCTAssertEqualWithAccuracy(latitude, 37.3316941, accuracy: 0.000001)
+            
+            XCTAssertEqualWithAccuracy(longitude, -122.030127, accuracy: 0.000001)
+
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3, handler: nil)
     }
 }
 
