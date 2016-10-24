@@ -28,6 +28,8 @@
 		7C871C161D73D90C00E6BFD1 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C871C151D73D90C00E6BFD1 /* InputViewController.swift */; };
 		7CC558A71CEBA9F200922DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC558A61CEBA9F200922DC8 /* Main.storyboard */; };
 		7CC558A91CEBAB4A00922DC8 /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC558A81CEBAB4A00922DC8 /* ItemListDataProvider.swift */; };
+		7CCEA2BC1DBD778A004B684B /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA2BB1DBD778A004B684B /* APIClientTests.swift */; };
+		7CCEA2BE1DBD77C9004B684B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA2BD1DBD77C9004B684B /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		7C871C151D73D90C00E6BFD1 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputViewController.swift; path = ViewControllers/InputViewController.swift; sourceTree = "<group>"; };
 		7CC558A61CEBA9F200922DC8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7CC558A81CEBAB4A00922DC8 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListDataProvider.swift; path = ViewControllers/ItemListDataProvider.swift; sourceTree = "<group>"; };
+		7CCEA2BB1DBD778A004B684B /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		7CCEA2BD1DBD77C9004B684B /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				7C6AC99E1CE8A2D9006AD257 /* AppDelegate.swift */,
+				7CCEA2BD1DBD77C9004B684B /* APIClient.swift */,
 				7CC558A61CEBA9F200922DC8 /* Main.storyboard */,
 				7C6AC9C41CE8A8BA006AD257 /* Model */,
 				7C6AC9BE1CE8A304006AD257 /* Controllers */,
@@ -126,6 +131,7 @@
 				7C6AC9CF1CEB5835006AD257 /* Controllers */,
 				7C6AC9C31CE8A6FB006AD257 /* Model */,
 				7C6AC9B51CE8A2D9006AD257 /* Info.plist */,
+				7CCEA2BB1DBD778A004B684B /* APIClientTests.swift */,
 			);
 			path = TDDToDoTests;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				7C871C161D73D90C00E6BFD1 /* InputViewController.swift in Sources */,
 				7C6AC9CE1CE8B4E1006AD257 /* ItemManager.swift in Sources */,
 				7CC558A91CEBAB4A00922DC8 /* ItemListDataProvider.swift in Sources */,
+				7CCEA2BE1DBD77C9004B684B /* APIClient.swift in Sources */,
 				7C6AC9D71CEB5A82006AD257 /* ItemListViewController.swift in Sources */,
 				7C6AC99F1CE8A2D9006AD257 /* AppDelegate.swift in Sources */,
 				7C56CF2D1CEF7CD800A24467 /* ItemCell.swift in Sources */,
@@ -304,6 +311,7 @@
 				7C871C141D73D8B000E6BFD1 /* InputViewControllerTests.swift in Sources */,
 				7C6AC9CA1CE8B0FF006AD257 /* LocationTests.swift in Sources */,
 				7C871C0A1D72437C00E6BFD1 /* DetailViewControllerTests.swift in Sources */,
+				7CCEA2BC1DBD778A004B684B /* APIClientTests.swift in Sources */,
 				7C6AC9C21CE8A6F1006AD257 /* ToDoItemTests.swift in Sources */,
 				7C6AC9D51CEB5A08006AD257 /* ItemListViewControllerTests.swift in Sources */,
 			);
