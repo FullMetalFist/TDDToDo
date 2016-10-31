@@ -18,7 +18,14 @@ class APIClient {
     
     func loginUserWithName(username: String, password: String, completion: (ErrorType?) -> Void) {
         
-        guard let url = NSURL(string: "https://awesometodos.com") else { fatalError() }
+        let allowedCharacters = NSCharacterSet(charactersInString: "/%&=?$#+-~@<>|\\*,.()[]{}^!").invertedSet
+        guard let encodedUsername = username.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters) else {
+            fatalError()
+        }
+        guard let encodedPassword = password.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters) else {
+            fatalError()
+        }
+        guard let url = NSURL(string: "https://awesometodos.com/login?username=\(encodedUsername)&password=\(encodedPassword)") else { fatalError() }
         session.dataTaskWithURL(url) { (data, response, error) -> Void in
             
         }
