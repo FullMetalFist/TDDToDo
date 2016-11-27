@@ -12,6 +12,10 @@ protocol TDDToDoURLSession {
     func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask
 }
 
+enum WebserviceError: ErrorType {
+    case DataEmptyError
+    case ResponseError
+}
 class APIClient {
     
     lazy var session: TDDToDoURLSession = NSURLSession.sharedSession()
@@ -31,13 +35,25 @@ class APIClient {
         
         let task = session.dataTaskWithURL(url) { (data, response, error) in
             // ...
-            let resposneDict = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
-            let token = resposneDict["token"] as! String
-            self.keychainManager?.setPassword(token, account: "token")
+            if error != nil {
+                completion(WebserviceError.ResponseError)
+                return
+            }
+            
+            if let theData = data {
+                do {
+                    let resposneDict = try NSJSONSerialization.JSONObjectWithData(theData, options: [])
+                    let token = resposneDict["token"] as! String
+                    self.keychainManager?.setPassword(token, account: "token")
+                } catch {
+                    completion(error)
+                }
+            } else {
+                completion(WebserviceError.DataEmptyError)
+            }
         }
         
         task.resume()
-
     }
 }
 
