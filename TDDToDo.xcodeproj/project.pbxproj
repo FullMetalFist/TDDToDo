@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C163FB41CEBB1520029FEDC /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C163FB31CEBB1520029FEDC /* ItemListDataProviderTests.swift */; };
+		7C4F88501DE8C1ED001529E0 /* KeychainAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F884F1DE8C1ED001529E0 /* KeychainAccessible.swift */; };
 		7C56CF2D1CEF7CD800A24467 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C56CF2C1CEF7CD800A24467 /* ItemCell.swift */; };
 		7C6AC99F1CE8A2D9006AD257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6AC99E1CE8A2D9006AD257 /* AppDelegate.swift */; };
 		7C6AC9A61CE8A2D9006AD257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6AC9A51CE8A2D9006AD257 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		7C163FB31CEBB1520029FEDC /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListDataProviderTests.swift; path = ViewControllers/ItemListDataProviderTests.swift; sourceTree = "<group>"; };
+		7C4F884F1DE8C1ED001529E0 /* KeychainAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAccessible.swift; sourceTree = "<group>"; };
 		7C56CF2C1CEF7CD800A24467 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = ViewControllers/ItemCell.swift; sourceTree = "<group>"; };
 		7C6AC99B1CE8A2D9006AD257 /* TDDToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDDToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6AC99E1CE8A2D9006AD257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				7C6AC99E1CE8A2D9006AD257 /* AppDelegate.swift */,
 				7CCEA2BD1DBD77C9004B684B /* APIClient.swift */,
+				7C4F884F1DE8C1ED001529E0 /* KeychainAccessible.swift */,
 				7CC558A61CEBA9F200922DC8 /* Main.storyboard */,
 				7C6AC9C41CE8A8BA006AD257 /* Model */,
 				7C6AC9BE1CE8A304006AD257 /* Controllers */,
@@ -290,6 +293,7 @@
 			files = (
 				7C871C161D73D90C00E6BFD1 /* InputViewController.swift in Sources */,
 				7C6AC9CE1CE8B4E1006AD257 /* ItemManager.swift in Sources */,
+				7C4F88501DE8C1ED001529E0 /* KeychainAccessible.swift in Sources */,
 				7CC558A91CEBAB4A00922DC8 /* ItemListDataProvider.swift in Sources */,
 				7CCEA2BE1DBD77C9004B684B /* APIClient.swift in Sources */,
 				7C6AC9D71CEB5A82006AD257 /* ItemListViewController.swift in Sources */,

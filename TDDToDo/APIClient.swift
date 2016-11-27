@@ -15,6 +15,8 @@ protocol TDDToDoURLSession {
 class APIClient {
     
     lazy var session: TDDToDoURLSession = NSURLSession.sharedSession()
+    var keychainManager: KeychainAccessible?
+    
     
     func loginUserWithName(username: String, password: String, completion: (ErrorType?) -> Void) {
         
@@ -26,9 +28,16 @@ class APIClient {
             fatalError()
         }
         guard let url = NSURL(string: "https://awesometodos.com/login?username=\(encodedUsername)&password=\(encodedPassword)") else { fatalError() }
-        session.dataTaskWithURL(url) { (data, response, error) -> Void in
-            
+        
+        let task = session.dataTaskWithURL(url) { (data, response, error) in
+            // ...
+            let resposneDict = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            let token = resposneDict["token"] as! String
+            self.keychainManager?.setPassword(token, account: "token")
         }
+        
+        task.resume()
+
     }
 }
 

@@ -52,6 +52,30 @@ class APIClientTests: XCTestCase {
         
         XCTAssertEqual(urlComponents?.percentEncodedQuery, "username=\(expectedUsername)&password=\(expectedPassword)")
     }
+    
+    func testLogin_CallsResumeOfDataTask() {
+        
+        let completion = { (error: ErrorType?) in }
+        sut.loginUserWithName("dude", password: "1234", completion: completion)
+        
+        XCTAssertTrue(mockURLSession.dataTask.resumeGotCalled)
+    }
+    
+    func testLogin_SetsToken() {
+        
+        let mockKeychainManager = MockKechainManager()
+        sut.keychainManager = mockKeychainManager
+        
+        let completion = { (error: ErrorType?) in }
+        sut.loginUserWithName("dude", password: "1234", completion: completion)
+        
+        let responseDict = ["token" : "1234567890"]
+        let responseData = try! NSJSONSerialization.dataWithJSONObject(responseDict, options: [])
+        mockURLSession.completionHandler?(responseData, nil, nil)
+        
+        let token = mockKeychainManager.passwordForAccount("token")
+        XCTAssertEqual(token, responseDict["token"])
+    }
 }
 
 extension APIClientTests {
@@ -62,12 +86,39 @@ extension APIClientTests {
         
         var completionHandler: Handler?
         var url: NSURL?
+        var dataTask = MockURLSessionDataTask()
         
         func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
             
             self.url = url
             self.completionHandler = completionHandler
-            return NSURLSession.sharedSession().dataTaskWithURL(url)
+            return dataTask
+        }
+        
+        
+    }
+    
+    class MockURLSessionDataTask: NSURLSessionDataTask {
+        var resumeGotCalled = false
+        
+        override func resume() {
+            resumeGotCalled = true
+        }
+    }
+    
+    class MockKechainManager: KeychainAccessible {
+        var passwordDict = [String: String]()
+        
+        func setPassword(password: String, account: String) {
+            passwordDict[account] = password
+        }
+        
+        func deletePasswordForAccount(account: String) {
+            passwordDict.removeValueForKey(account)
+        }
+        
+        func passwordForAccount(account: String) -> String? {
+            return passwordDict[account]
         }
     }
 }
