@@ -122,6 +122,15 @@ class APIClientTests: XCTestCase {
         
         XCTAssertNotNil(theError)
     }
+    
+    /**
+     * Fetch item from web service (GET)
+     *
+     */
+    
+    /**
+     * Post item to web service (POST)
+     */
 }
 
 extension APIClientTests {
