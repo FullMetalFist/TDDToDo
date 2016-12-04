@@ -10,6 +10,8 @@ import UIKit
 
 class InputViewController: UIViewController {
     
+    var itemManager: ItemManager?
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!

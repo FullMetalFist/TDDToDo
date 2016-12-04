@@ -70,7 +70,13 @@
                             <constraint firstItem="ByI-mS-C5b" firstAttribute="top" secondItem="0rJ-8H-Z7a" secondAttribute="bottom" id="xvP-Ai-yAG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4B9-Wb-ewo"/>
+                    <navigationItem key="navigationItem" id="4B9-Wb-ewo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z54-co-gMy">
+                            <connections>
+                                <action selector="addItem:" destination="UEK-cj-oa1" id="erQ-fc-FcA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataProvider" destination="96Y-o5-3ud" id="5h9-cR-1VF"/>
                         <outlet property="tableView" destination="0rJ-8H-Z7a" id="ve4-jH-BrT"/>
