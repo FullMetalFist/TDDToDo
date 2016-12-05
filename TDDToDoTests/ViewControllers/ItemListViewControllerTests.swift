@@ -59,8 +59,9 @@ class ItemListViewControllerTests: XCTestCase {
         UIApplication.sharedApplication().keyWindow?.rootViewController = sut
         sut.performSelector(addButton.action, withObject: addButton)
         
-        XCTAssertNotNil(sut.presentedViewController)
-        XCTAssertTrue(sut.presentedViewController is InputViewController)
+        presentInputViewController(sut.presentedViewController!)
+//        XCTAssertNotNil(sut.presentedViewController)
+//        XCTAssertTrue(sut.presentedViewController is InputViewController)
         
         let inputViewController = sut.presentedViewController as! InputViewController
         XCTAssertNotNil(inputViewController.titleTextField)
@@ -78,9 +79,9 @@ class ItemListViewControllerTests: XCTestCase {
         UIApplication.sharedApplication().keyWindow?.rootViewController = sut
         
         sut.performSelector(addButton.action, withObject: addButton)
-        
-        XCTAssertNotNil(sut.presentedViewController)
-        XCTAssertTrue(sut.presentedViewController is InputViewController)
+        presentInputViewController(sut.presentedViewController!)
+//        XCTAssertNotNil(sut.presentedViewController)
+//        XCTAssertTrue(sut.presentedViewController is InputViewController)
         
         let inputViewController = sut.presentedViewController as! InputViewController
         
@@ -90,5 +91,10 @@ class ItemListViewControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(sut.itemManager === inputItemManager)
+    }
+    
+    func presentInputViewController(viewController: UIViewController) {
+        XCTAssertNotNil(viewController)
+        XCTAssertTrue(viewController is InputViewController)
     }
 }
