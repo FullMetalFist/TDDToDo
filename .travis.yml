@@ -1,4 +1,7 @@
 language: objective-c
+branches:
+ only:
+ - swift2_3
 env:
     - TOOLCHAINS=swift
 script:
