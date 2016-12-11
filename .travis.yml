@@ -1,0 +1,8 @@
+language: objective-c
+env:
+    - TOOLCHAINS=swift
+script:
+    - swift build --fetch
+xcode_project: TDDToDo.xcodeproj
+xcode_scheme: TDDToDoTests
+osx_image: xcode8.1
