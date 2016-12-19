@@ -32,5 +32,9 @@ class InputViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func save() {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }
