@@ -99,7 +99,10 @@ class InputViewControllerTests: XCTestCase {
         
         let item = sut.itemManager?.itemAtIndex(0)
         
-        let testItem = ToDoItem(title: "Test Title", itemDescription: "Test Description", timestamp: 1456095600, location: Location(name: "Office", coordinate: coordinate))
+        let testItem = ToDoItem(title: "Test Title",
+                                itemDescription: "Test Description",
+                                timestamp: 1456117200,
+                                location: Location(name: "Office", coordinate: coordinate))
         
         XCTAssertEqual(item, testItem)
     }
@@ -116,6 +119,7 @@ class InputViewControllerTests: XCTestCase {
     }
     
     func testSave_DismissesViewController() {
+
         let mockInputViewController = MockInputViewController()
         
         mockInputViewController.titleTextField = UITextField()
@@ -125,8 +129,8 @@ class InputViewControllerTests: XCTestCase {
         mockInputViewController.descriptionTextField = UITextField()
         
         mockInputViewController.titleTextField.text = "Test Title"
-        // TODO: some parts missing
-//        mockInputViewController.save()
+
+        mockInputViewController.save()
         
         XCTAssertTrue(mockInputViewController.dismissGotCalled)
     }
@@ -164,6 +168,5 @@ extension InputViewControllerTests {
             
             dismissGotCalled = true
         }
-        
     }
 }

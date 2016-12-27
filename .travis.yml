@@ -7,5 +7,3 @@ env:
 xcode_project: TDDToDo.xcodeproj
 xcode_scheme: TDDToDoTests
 osx_image: xcode8.1
-script:
-    - xcodebuild clean build test -project TDDToDo.xcodeproj -scheme TDDToDoTests

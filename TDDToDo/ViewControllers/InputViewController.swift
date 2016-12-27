@@ -59,5 +59,6 @@ class InputViewController: UIViewController {
                 }
             }
         }
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

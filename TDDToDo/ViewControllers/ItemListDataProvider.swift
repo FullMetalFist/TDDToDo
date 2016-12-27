@@ -13,7 +13,7 @@ enum Section: Int {
     case Done
 }
 
-class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
+class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate, ItemManagerSettable {
     
     var itemManager: ItemManager?
     
@@ -81,9 +81,27 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
         tableView.reloadData()
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        guard let itemSection = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        switch itemSection {
+        case .ToDo:
+            NSNotificationCenter.defaultCenter().postNotificationName("ItemSelectedNotification",
+                object: self,
+                userInfo: ["index": indexPath.row])
+        default:
+            break
+        }
+    }
+    
     // MARK: UITableView Delegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
+}
+
+@objc protocol ItemManagerSettable {
+    var itemManager: ItemManager? { get set }
 }
