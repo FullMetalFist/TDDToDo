@@ -78,6 +78,4 @@ class DetailViewControllerTests: XCTestCase {
     }
     
     
-    
-    
 }
