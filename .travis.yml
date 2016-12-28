@@ -1,9 +1,0 @@
-language: objective-c
-branches:
- only:
- - swift2_3
-env:
-    - TOOLCHAINS=swift
-xcode_project: TDDToDo.xcodeproj
-xcode_scheme: TDDToDoTests
-osx_image: xcode8.1
