@@ -1,4 +1,12 @@
-osx_image: xcode8
 language: objective-c
+branches:
+ only:
+ - swift3
+
+osx_image: xcode8
 xcode_project: TDDToDo.xcodeproj
 xcode_scheme: TDDToDoTests
+xcode_sdk: iphonesimulator10.1
+
+script:
+ - xcodebuild clean build test -project TDDToDo.xcodeproj -scheme TDDToDoTests
